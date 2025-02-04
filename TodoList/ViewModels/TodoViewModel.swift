@@ -15,7 +15,11 @@ class TodoViewModel: ObservableObject {
     }
     
     func getTodos() {
-        
+        self.todos.append(contentsOf: Todo.testData)
+    }
+    
+    func addTodo(todo: Todo) {
+        self.todos.append(todo)
     }
 }
 

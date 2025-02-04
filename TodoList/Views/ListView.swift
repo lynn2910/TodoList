@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ListView: View {
     
-    var data: [Todo]
+    @EnvironmentObject var todoVM: TodoViewModel
     
     var body: some View {
         // barre de navigation pour edit et add et page d'accueil
         NavigationView {
             // tâches sous forme de liste
             List {
-                ForEach(data) {
+                ForEach(todoVM.todos) {
                     todo in RowView(todo: todo)
                 }
             }
@@ -36,6 +36,7 @@ struct ListView: View {
 }
 
 #Preview {
-    ListView(data: Todo.testData)
+    ListView()
+        .environmentObject(TodoViewModel())
 }
 
