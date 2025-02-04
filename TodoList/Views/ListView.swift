@@ -19,6 +19,7 @@ struct ListView: View {
                 ForEach(todoVM.todos) {
                     todo in RowView(todo: todo)
                 }
+                .onDelete(perform: todoVM.deleteTodo)
             }
             .listStyle(PlainListStyle())
             .navigationTitle("Todo")

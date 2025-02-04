@@ -21,5 +21,9 @@ class TodoViewModel: ObservableObject {
     func addTodo(todo: Todo) {
         self.todos.append(todo)
     }
+    
+    func deleteTodo(indexSet: IndexSet) {
+        self.todos.remove(atOffsets: indexSet)
+    }
 }
 
