@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  TodoList
-//
-//  Created by levin marvyn on 28/01/2025.
-//
-
 import SwiftUI
 
 struct ListView: View {
@@ -16,10 +9,14 @@ struct ListView: View {
         NavigationView {
             // tâches sous forme de liste
             List {
-                ForEach(todoVM.todos) {
-                    todo in RowView(todo: todo)
+                ForEach(todoVM.todos) {todo in
+                    RowView(todo: todo)
+                        .onTapGesture {
+                            self.todoVM.update(todo: todo)
+                        }
                 }
                 .onDelete(perform: todoVM.deleteTodo)
+                .onMove(perform: todoVM.moveTodo)
             }
             .listStyle(PlainListStyle())
             .navigationTitle("Todo")

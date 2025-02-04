@@ -1,10 +1,3 @@
-//
-//  TodoViewModel.swift
-//  TodoList
-//
-//  Created by colin cedric on 04/02/2025.
-//
-
 import Foundation
 
 class TodoViewModel: ObservableObject {
@@ -24,6 +17,18 @@ class TodoViewModel: ObservableObject {
     
     func deleteTodo(indexSet: IndexSet) {
         self.todos.remove(atOffsets: indexSet)
+    }
+    
+    func moveTodo(from: IndexSet, to: Int) {
+        self.todos.move(fromOffsets: from, toOffset: to)
+    }
+    
+    func update(todo: Todo) {
+        for(index, td) in todos.enumerated() {
+            if todo.id == td.id {
+                self.todos[index].isCompleted.toggle()
+            }
+        }
     }
 }
 
