@@ -18,6 +18,16 @@ struct RowView: View {
             Text(todo.title)
             
             Spacer()
+
+            Text(todo.priority.rawValue)
+                .font(.footnote)
+                .padding(3)
+                .foregroundColor(Color(.systemGray2))
+                .frame(width: 62)
+                .overlay(
+                    Capsule()
+                        .stroke(Color(.systemGray2), lineWidth: 0.75)
+                )
         }
         // style sur tout le HStack
         .font(.title2)
